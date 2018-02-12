@@ -8,7 +8,7 @@
 
 vectorInt::vectorInt() {
     // Make an empty container
-    buffer = new int[0];
+    buffer = new int[1];
     _vectorSize = 0;
     _vectorCapacity = 1;
 }
@@ -53,10 +53,7 @@ void vectorInt::assign(int size, const int val) {
 
 int& vectorInt::at(int position) const {
     // Return the reference to the value at the given position
-    if(position < _vectorSize)
-        return buffer[position];
-    else
-        throw std::out_of_range("Out of range");
+    return buffer[position];
 }
 
 int& vectorInt::back() {
@@ -189,9 +186,7 @@ vectorInt &vectorInt::operator=(const vectorInt &x) {
 }
 
 int &vectorInt::operator[](int position) const {
-    if(position < _vectorSize)
-        return buffer[position];
-    throw std::out_of_range("Vector Index Out of bounds error");
+    return buffer[position];
 }
 
 void vectorInt::pop_back() {
@@ -200,16 +195,36 @@ void vectorInt::pop_back() {
 }
 
 void vectorInt::push_back(const int &val) {
+    //std::cout << "push_back call" << std::endl;
     _vectorSize += 1;
-    reserve(_vectorSize);
+    if(_vectorCapacity < _vectorSize)
+        reserve(_vectorSize);
+    buffer[_vectorSize - 1] = val;
+}
+
+void vectorInt::push_backAdd(const int &val) {
+    //std::cout << "push_back call" << std::endl;
+    _vectorSize += 1;
+    if(_vectorCapacity < _vectorSize)
+        reserve(_vectorCapacity + 10);
+    buffer[_vectorSize - 1] = val;
+}
+
+void vectorInt::push_backMult(const int &val) {
+    //std::cout << "push_back call" << std::endl;
+    _vectorSize += 1;
+    if(_vectorCapacity < _vectorSize)
+        reserve(_vectorCapacity*2);
     buffer[_vectorSize - 1] = val;
 }
 
 void vectorInt::reserve(int capacity) {
+
     // Requests that the vector has at least the size of the capacity param
     if(capacity > _vectorCapacity && capacity <= this->max_size()) {
+        //std::cout << "reserve call w/ cap " << capacity << "\nAlso " << _vectorCapacity << std::endl;
         // Allocate the extra memory
-        _vectorCapacity = capacity;
+
         int* tempBuffer = new int[capacity];
         // Copy values over to the new array
         for(int i = 0; i < _vectorSize; i++) {
@@ -217,6 +232,7 @@ void vectorInt::reserve(int capacity) {
         }
         delete[] buffer;
         buffer = tempBuffer;
+        _vectorCapacity = capacity;
     }
 }
 

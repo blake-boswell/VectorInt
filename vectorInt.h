@@ -39,6 +39,10 @@ public:
     void resize(int capacity);
     int size() const;                           // Returns the number of elements in the vector
     void swap(vectorInt& x);
+
+    void push_backAdd(const int &val);
+
+    void push_backMult(const int &val);
 };
 
 
