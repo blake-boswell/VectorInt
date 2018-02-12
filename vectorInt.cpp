@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <algorithm>
 #include "vectorInt.h"
 
 vectorInt::vectorInt() {
@@ -124,20 +125,44 @@ void vectorInt::erase(int first, int last) {
 }
 
 int& vectorInt::front() {
-    int x = 2;
-    return x;
+    return *buffer;
 }
 
-void vectorInt::insert(int position, const int val) {
-
+void vectorInt::insert(int position, int val) {
+    // Insert value to position
+    // Caveats: check to make sure that extending the size by one does not go over the capacity
+    // So let's use the reserve function to ensure this.
+    if(position <= _vectorSize && position >= 0) {
+        _vectorSize += 1;
+        reserve(_vectorSize);
+        // _vectorSize will be
+        // Shift array values down to the right
+        int temp;
+        for(int i = position; i < _vectorSize; i++) {
+            val = temp;
+        }
+    } else
+        std::cout << "Failure inserting" << std::endl;
 }
 
-void vectorInt::insert(int position, int num, const int val) {
-
+void vectorInt::insert(int position, int num, int val) {
+    if(position <= _vectorSize && position >= 0) {
+        _vectorSize += num;
+        reserve(_vectorSize);
+        // _vectorSize will be
+        // Shift array values down to the right num spaces
+        int temp;
+        for(int i = position; i < _vectorSize; i++) {
+            temp = buffer[i];
+            buffer[i] = val;
+            val = temp;
+        }
+    } else
+        std::cout << "Failure inserting" << std::endl;
 }
 
 int vectorInt::max_size() const {
-    return 0;
+    return 10000000;
 }
 
 vectorInt &vectorInt::operator=(const vectorInt &x) {
@@ -170,18 +195,40 @@ int &vectorInt::operator[](int position) const {
 }
 
 void vectorInt::pop_back() {
-
+    // Remove last element in vector
+    _vectorSize -= 1;
 }
 
 void vectorInt::push_back(const int &val) {
-
+    _vectorSize += 1;
+    reserve(_vectorSize);
+    buffer[_vectorSize - 1] = val;
 }
 
 void vectorInt::reserve(int capacity) {
-
+    // Requests that the vector has at least the size of the capacity param
+    if(capacity > _vectorCapacity && capacity <= this->max_size()) {
+        // Allocate the extra memory
+        _vectorCapacity = capacity;
+        int* tempBuffer = new int[capacity];
+        // Copy values over to the new array
+        for(int i = 0; i < _vectorSize; i++) {
+            tempBuffer[i] = buffer[i];
+        }
+        delete[] buffer;
+        buffer = tempBuffer;
+    }
 }
 
 void vectorInt::resize(int capacity) {
+    reserve(capacity);
+    if(_vectorSize < capacity) {
+        // Fill in "empty" values to extra space
+        for(int i = _vectorSize; i < capacity; i++) {
+            buffer[i] = 0;
+        }
+    }
+    _vectorSize = capacity;
 
 }
 
@@ -190,5 +237,23 @@ int vectorInt::size() const {
 }
 
 void vectorInt::swap(vectorInt &x) {
+    // Reserve room
+    x.reserve(_vectorSize);
+    this->reserve(x.size());
+
+    // swap sizes
+    int temp = x.size();
+    x.resize(_vectorSize);
+    _vectorSize = temp;
+
+    // Store the size of the bigger vector
+    int largestSize = std::max(_vectorSize, x.size());
+
+    // Swap buffer contents
+    for(int i = 0; i < largestSize; i++) {
+        temp = x[i];
+        x[i] = buffer[i];
+        buffer[i] = temp;
+    }
 
 }

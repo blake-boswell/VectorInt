@@ -28,8 +28,8 @@ public:
     void erase(int position);                  // Removes the element at the position and re-positions the elements
     void erase(int first, int last);           // Removes the elements in the range
     int& front();                               // Returns a reference to the front of the vector
-    void insert(int position, const int val);
-    void insert(int position, int num, const int val);     // Insert multiple val?
+    void insert(int position, int val);
+    void insert(int position, int num, int val);     // Insert multiple val?
     int max_size() const;                       // Returns the max number that can be stored (capacity)
     vectorInt& operator=(const vectorInt& x);
     int& operator[](int position) const;             // Returns the reference to the int at the position
