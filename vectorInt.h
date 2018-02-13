@@ -1,5 +1,5 @@
 //
-// Created by Blake on 2/2/2018.
+// Created by Blake Boswell on 2/2/2018.
 //
 
 #ifndef DATASTRUCTURES_VECTORINT_H
@@ -43,6 +43,8 @@ public:
     void push_backAdd(const int &val);
 
     void push_backMult(const int &val);
+
+    void print();
 };
 
 

@@ -1,5 +1,5 @@
 //
-// Created by Blake on 2/2/2018.
+// Created by Blake Boswell on 2/2/2018.
 //
 
 #include <iostream>
@@ -34,18 +34,16 @@ vectorInt::vectorInt(const vectorInt &x) {
 
 vectorInt::~vectorInt() {
     delete[] buffer;
+    std::cout << "Destructor called..." << std::endl;
 }
 
 void vectorInt::assign(int size, const int val) {
     if(size > _vectorCapacity) {
         // allocate more memory
-        delete[] buffer;
-        _vectorSize = size;
-        _vectorCapacity = size;
-        buffer = new int[size];
-    } else {
-        _vectorSize = size;
+        reserve(size);
     }
+    _vectorSize = size;
+
     for(int i = 0; i < _vectorSize; i++) {
         buffer[i] = val;
     }
@@ -130,30 +128,40 @@ void vectorInt::insert(int position, int val) {
     // Caveats: check to make sure that extending the size by one does not go over the capacity
     // So let's use the reserve function to ensure this.
     if(position <= _vectorSize && position >= 0) {
-        _vectorSize += 1;
-        reserve(_vectorSize);
-        // _vectorSize will be
-        // Shift array values down to the right
-        int temp;
-        for(int i = position; i < _vectorSize; i++) {
-            val = temp;
+        // Make sure capacity is large enough
+        reserve(_vectorSize + 1);
+        _vectorSize++;
+        // shift all to the right of position right one place
+        for(int i = _vectorSize - 1; i >= position; i--) {
+            buffer[i+1] = buffer[i];
         }
+        // Insert new value at position
+        buffer[position] = val;
     } else
         std::cout << "Failure inserting" << std::endl;
 }
 
 void vectorInt::insert(int position, int num, int val) {
-    if(position <= _vectorSize && position >= 0) {
-        _vectorSize += num;
-        reserve(_vectorSize);
-        // _vectorSize will be
-        // Shift array values down to the right num spaces
-        int temp;
-        for(int i = position; i < _vectorSize; i++) {
-            temp = buffer[i];
+    if(_vectorSize == 0) {
+        reserve(num);
+        _vectorSize = num;
+        for(int i = 0; i < _vectorSize; i++) {
             buffer[i] = val;
-            val = temp;
         }
+    }else if(position <= _vectorSize && position >= 0) {
+        // Make sure capacity is large enough
+        reserve(_vectorSize + num);
+        // Shift array values down to the right num spaces
+        for(int i = 0; i < num; i++) {
+            _vectorSize++;
+            // shift all to the right of position right one place
+            for(int j = _vectorSize - 1; j >= position; j--) {
+                buffer[j+1] = buffer[j];
+            }
+            // Insert ith new value at position + i
+            buffer[position + i] = val;
+        }
+        // Add in the new values
     } else
         std::cout << "Failure inserting" << std::endl;
 }
@@ -166,23 +174,13 @@ vectorInt &vectorInt::operator=(const vectorInt &x) {
     // Check if its the same thing (physically the same thing)
     // Use the reserve function to free up the space
     if(this != &x) {
-        _vectorCapacity = x.capacity();
-        _vectorSize = x.size();
-        for(int i = 0; i < _vectorSize; i++) {
-            buffer[i] = x[i];
+        reserve(x.size());
+        _vectorSize = 0;
+        for(; _vectorSize < x.size(); _vectorSize++) {
+            buffer[_vectorSize] = x[_vectorSize];
         }
     }
     return *this;
-
-//    if(&x == this)
-//        return *this;
-//    _vectorSize = 0;
-//    reserve(x.size());
-    // Need to free the space and copy things over
-//    for(; _vectorSize < x.size(); _vectorSize++)
-//        buffer[_vectorSize] = x[_vectorSize];
-//
-//    return *this;
 }
 
 int &vectorInt::operator[](int position) const {
@@ -272,4 +270,12 @@ void vectorInt::swap(vectorInt &x) {
         buffer[i] = temp;
     }
 
+}
+
+void vectorInt::print() {
+    std::cout << "Vector capacity: " << _vectorCapacity << std::endl;
+    std::cout << "Vector size: " << _vectorSize << std::endl;
+    for(int i = 0; i < _vectorSize; i++) {
+        std::cout << "[" << i << "] " << buffer[i] << std::endl;
+    }
 }

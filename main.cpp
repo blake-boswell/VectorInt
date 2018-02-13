@@ -1,220 +1,23 @@
+// Created by Blake Boswell on 2/2/2018
+
 #include <iostream>
 #include <ctime>
 #include "vectorInt.h"
 
 using namespace std;
 
-int main() {
-//    std::cout << "Hello, World!" << std::endl;
-//    vectorInt vector = vectorInt(10, 5);
-//    std::cout << "Vector values" << std::endl;
-//    cout << "Capacity: " << vector.capacity() << endl;
-//    cout << "Size: " << vector.size() << endl;
-//    for(int i = 0; i < vector.size(); i++) {
-//        cout << "[" << i << "] " << vector[i] << endl;
-//    }
-//    cout << "clearing vector..." << endl;
-//    vector.clear();
-//    std::cout << "Vector values" << std::endl;
-//    cout << "Capacity: " << vector.capacity() << endl;
-//    cout << "Size: " << vector.size() << endl;
-//    for(int i = 0; i < vector.size(); i++) {
-//        cout << "[" << i << "] " << vector[i] << endl;
-//    }
-//
-//    cout << "Assigning new values to the vector..." << endl;
-//    vector.assign(51, 13);
-//
-//    std::cout << "Vector values" << std::endl;
-//    cout << "Capacity: " << vector.capacity() << endl;
-//    cout << "Size: " << vector.size() << endl;
-//    for(int i = 0; i < vector.size(); i++) {
-//        cout << "[" << i << "] " << vector[i] << endl;
-//    }
-//    cout << "Erasing value..." << endl;
-//    vector.erase(42);
-//    std::cout << "Vector values" << std::endl;
-//    cout << "Capacity: " << vector.capacity() << endl;
-//    cout << "Size: " << vector.size() << endl;
-//    for(int i = 0; i < vector.size(); i++) {
-//        cout << "[" << i << "] " << vector[i] << endl;
-//    }
-//
-//    cout << "Setting values to their index" << endl;
-//    for(int i = 0; i < vector.size(); i++) {
-//        vector[i] = i;
-//    }
-//    cout << "Vector values" << endl;
-//    cout << "Capacity: " << vector.capacity() << endl;
-//    cout << "Size: " << vector.size() << endl;
-//    for(int i = 0; i < vector.size(); i++) {
-//        cout << "[" << i << "] " << vector[i] << endl;
-//    }
-//
-//    int first = 5;
-//    int last = 9;
-//    cout << "Erasing range " << first << " to " << last << endl;
-//    vector.erase(first, last);
-//    cout << "Vector values" << endl;
-//    cout << "Capacity: " << vector.capacity() << endl;
-//    cout << "Size: " << vector.size() << endl;
-//    for(int i = 0; i < vector.size(); i++) {
-//        cout << "[" << i << "] " << vector[i] << endl;
-//    }
-//
-////    cout << "Accessing out of bounds section" << endl;
-////    cout << vector[vector.size() + 1];
-//
-//    // Reserve test
-//    cout << "Testing reserve" << endl;
-//    cout << "Before" << endl;
-//    cout << "Capacity: " << vector.capacity() << endl;
-//    cout << "Size: " << vector.size() << endl;
-//    for(int i = 0; i < vector.size(); i++) {
-//        cout << "[" << i << "] " << vector[i] << endl;
-//    }
-//    cout << "Reserving room..." << endl;
-//    vector.reserve(200);
-//    cout << "After: " << endl;
-//    cout << "Capacity: " << vector.capacity() << endl;
-//    cout << "Size: " << vector.size() << endl;
-//    for(int i = 0; i < vector.size(); i++) {
-//        cout << "[" << i << "] " << vector[i] << endl;
-//    }
-//
-//    // Insert test
-//    cout << "Testing Insert" << endl;
-//    cout << "Before" << endl;
-//    cout << "Capacity: " << vector.capacity() << endl;
-//    cout << "Size: " << vector.size() << endl;
-//    for(int i = 0; i < vector.size(); i++) {
-//        cout << "[" << i << "] " << vector[i] << endl;
-//    }
-//    cout << "Inserting..." << endl;
-//    vector.insert(50, 200);
-//    cout << "After: " << endl;
-//    cout << "Capacity: " << vector.capacity() << endl;
-//    cout << "Size: " << vector.size() << endl;
-//    for(int i = 0; i < vector.size(); i++) {
-//        cout << "[" << i << "] " << vector[i] << endl;
-//    }
-//
-//    // Resize test
-//    cout << "Testing Resize (smaller)" << endl;
-//    cout << "Before" << endl;
-//    cout << "Capacity: " << vector.capacity() << endl;
-//    cout << "Size: " << vector.size() << endl;
-//    for(int i = 0; i < vector.size(); i++) {
-//        cout << "[" << i << "] " << vector[i] << endl;
-//    }
-//    cout << "Resizing (smaller)..." << endl;
-//    vector.resize(20);
-//    cout << "After: " << endl;
-//    cout << "Capacity: " << vector.capacity() << endl;
-//    cout << "Size: " << vector.size() << endl;
-//    for(int i = 0; i < vector.size(); i++) {
-//        cout << "[" << i << "] " << vector[i] << endl;
-//    }
-//
-//    cout << "Testing Resize (larger)" << endl;
-//    cout << "Before" << endl;
-//    cout << "Capacity: " << vector.capacity() << endl;
-//    cout << "Size: " << vector.size() << endl;
-//    for(int i = 0; i < vector.size(); i++) {
-//        cout << "[" << i << "] " << vector[i] << endl;
-//    }
-//    cout << "Resizing (larger)..." << endl;
-//    vector.resize(55);
-//    cout << "After: " << endl;
-//    cout << "Capacity: " << vector.capacity() << endl;
-//    cout << "Size: " << vector.size() << endl;
-//    for(int i = 0; i < vector.size(); i++) {
-//        cout << "[" << i << "] " << vector[i] << endl;
-//    }
-//
-//    // Pop back test
-//    cout << "Testing pop_back" << endl;
-//    cout << "Before" << endl;
-//    cout << "Capacity: " << vector.capacity() << endl;
-//    cout << "Size: " << vector.size() << endl;
-//    for(int i = 0; i < vector.size(); i++) {
-//        cout << "[" << i << "] " << vector[i] << endl;
-//    }
-//    cout << "Popping back..." << endl;
-//    vector.pop_back();
-//    cout << "After: " << endl;
-//    cout << "Capacity: " << vector.capacity() << endl;
-//    cout << "Size: " << vector.size() << endl;
-//    for(int i = 0; i < vector.size(); i++) {
-//        cout << "[" << i << "] " << vector[i] << endl;
-//    }
-//
-//    // Push back test
-//    cout << "Testing push_back" << endl;
-//    cout << "Before" << endl;
-//    cout << "Capacity: " << vector.capacity() << endl;
-//    cout << "Size: " << vector.size() << endl;
-//    for(int i = 0; i < vector.size(); i++) {
-//        cout << "[" << i << "] " << vector[i] << endl;
-//    }
-//    cout << "Pushing back..." << endl;
-//    vector.push_back(25);
-//    cout << "After: " << endl;
-//    cout << "Capacity: " << vector.capacity() << endl;
-//    cout << "Size: " << vector.size() << endl;
-//    for(int i = 0; i < vector.size(); i++) {
-//        cout << "[" << i << "] " << vector[i] << endl;
-//    }
-//
-//    // Swap test
-//    vectorInt vector2 = vectorInt(5, 200);
-//    cout << "Testing swap" << endl;
-//    cout << "Before" << endl;
-//    cout << "Capacity: " << vector.capacity() << "\t\tCapacity (2): " << vector2.capacity() << endl;
-//    cout << "Size: " << vector.size()  << "\t\tSize (2): " << vector2.size() << endl;
-//    for(int i = 0; i < vector.size(); i++) {
-//        if(i >= vector2.size())
-//            cout << "[" << i << "] " << vector[i] << endl;
-//        else
-//            cout << "[" << i << "] " << vector[i] << "\t\t" << vector2[i] << endl;
-//    }
-//    cout << "Swapping..." << endl;
-//    vector.swap(vector2);
-//    cout << "After: " << endl;
-//    cout << "Capacity: " << vector.capacity() << "\t\tCapacity (2): " << vector2.capacity() << endl;
-//    cout << "Size: " << vector.size()  << "\t\tSize (2): " << vector2.size() << endl;
-//    int max = std::max(vector.size(), vector2.size());
-//    for(int i = 0; i < max; i++) {
-//        if(i >= vector.size())
-//            cout << "[" << i << "]\t\t" << vector2[i] << endl;
-//        else
-//            cout << "[" << i << "] " << vector[i] << "\t\t" << vector2[i] << endl;
-//    }
-
-
+void runTests(int iterations) {
     vectorInt adder = vectorInt();
     vectorInt multiplier = vectorInt();
 
     clock_t start;
     double duration;
+    cout << "Starting tests for " << iterations << " iterations. This may take a while." << endl;
 
     start = clock();
 
     // Test adding 10
-//    int count = 0;
-//    while(count < 500000) {
-//        adder.reserve(adder.capacity() + 10);
-//        // cout << "Start: " << start << "\tEnd: " << end << endl;
-//
-//        for(int j = 0; j < 10; j++) {
-//            adder.push_back(count);
-//            count++;
-//        }
-//
-//
-//    }
-
-    for(int i = 0; i < 10000000; i++) {
+    for(int i = 0; i < iterations; i++) {
         adder.push_backAdd(i);
     }
 
@@ -230,20 +33,7 @@ int main() {
     start = clock();
 
     // Test multiplying by 2
-//    count = 0;
-//    while(count < 500000) {
-//        multiplier.reserve(multiplier.capacity() * 2);
-//        int end = multiplier.capacity()/2;
-//        cout << end << endl;
-//        for(int j = 0; j < end; j++) {
-//            multiplier.push_back(count);
-//            count++;
-//        }
-//
-//
-//    }
-
-    for(int i = 0; i < 10000000; i++) {
+    for(int i = 0; i < iterations; i++) {
         multiplier.push_backMult(i);
     }
 
@@ -273,6 +63,250 @@ int main() {
     for(int i = multiplier.size() - 100; i < multiplier.size(); i++) {
         cout << "[" << i << "] " << multiplier[i] << ", ";
     }
+}
+
+int main() {
+
+    /*
+     * ===============================================================================
+     * === Only run one of the tests bellow at a time to test the member functions ===
+     * ===============================================================================
+     */
+
+
+//    // Constructor tests
+//    cout << "Running the constructor tests" << endl;
+//    cout << "Default constructor" << endl;
+//    vectorInt vector = vectorInt();
+//    vector.print();
+//
+//    cout << "Constructor with params (size 5, values of 10)" << endl;
+//    vectorInt vector2 = vectorInt(5, 10);
+//    vector2.print();
+//
+//    cout << "Copy constructor" << endl;
+//    vectorInt vector3 = vectorInt(vector2);
+//    vector3.print();
+//    cout << "Proof they are different references:" << endl;
+//    vector2.pop_back();
+//    vector3.push_back(-1);
+//    cout << "Added a -1 to the end of vector3 (the copy)\nRemoved the last element of vector2 (original)" << endl;
+//    cout << "Vector2:" << endl;
+//    vector2.print();
+//    cout << "Vector3:" << endl;
+//    vector3.print();
+
+//    // Assign test
+//    cout << "Running the assign test" << endl;
+//    vectorInt vector = vectorInt(2, -1);
+//    cout << "Init" << endl;
+//    vector.print();
+//
+//    cout << "Assigning size 10, values of 5" << endl;
+//    vector.assign(10, 5);
+//    cout << "After assign function" << endl;
+//    vector.print();
+
+//    // At test
+//    cout << "Running the at test" << endl;
+//    vectorInt vector = vectorInt(2, -1);
+//    cout << "Init" << endl;
+//    vector.print();
+//
+//    cout << "Checking the value at position 1" << endl;
+//    cout << vector.at(1) << endl;
+
+//    // Back test
+//    cout << "Running the back test" << endl;
+//    vectorInt vector = vectorInt(2, -1);
+//    cout << "Init" << endl;
+//    vector.print();
+//
+//    cout << "Checking the back of the vector" << endl;
+//    cout << vector.back() << endl;
+//    cout << "Adding value to the end of the vector" << endl;
+//    vector.push_back(100);
+//    vector.print();
+//    cout << "Checking the back of the vector" << endl;
+//    cout << vector.back() << endl;
+
+//    // Clear test
+//    cout << "Running the clear test" << endl;
+//    vectorInt vector = vectorInt(15, -1);
+//    cout << "Init" << endl;
+//    vector.print();
+//
+//    cout << "Clearing the vector" << endl;
+//    vector.clear();
+//    vector.print();
+
+//    // Empty test
+//    cout << "Running the empty test" << endl;
+//    vectorInt vector = vectorInt(2, -1);
+//    cout << "Init" << endl;
+//    vector.print();
+//    if(vector.empty())
+//        cout << "The vector is empty" << endl;
+//    else
+//        cout << "The vector is not empty" << endl;
+//    cout << "Clearing the vector..." << endl;
+//    vector.clear();
+//    vector.print();
+//    if(vector.empty())
+//        cout << "The vector is empty" << endl;
+//    else
+//        cout << "The vector is not empty" << endl;
+
+//    // Erase test
+//    cout << "Running the erase test" << endl;
+//    vectorInt vector = vectorInt();
+//    for(int i = 0; i < 10; i++) {
+//        vector.push_back(i);
+//    }
+//    cout << "Init" << endl;
+//    vector.print();
+//
+//    cout << "Erasing the element at index 5" << endl;
+//    vector.erase(5);
+//    vector.print();
+//
+//    cout << "Erasing elements from index 3-6" << endl;
+//    vector.erase(3, 7);
+//    vector.print();
+
+//    // Front test
+//    cout << "Running the front test" << endl;
+//    vectorInt vector = vectorInt();
+//    for(int i = 0; i < 10; i++) {
+//        vector.push_back(i);
+//    }
+//    cout << "Init" << endl;
+//    vector.print();
+//
+//    cout << "The front int is: " << vector.front() << endl;
+//    cout << "Inserting a 10 into the 0th index" << endl;
+//    vector.insert(0, 10);
+//    vector.print();
+//    cout << "The front int is: " << vector.front() << endl;
+
+//    // Insert test
+//    vectorInt vector = vectorInt();
+//    cout << "Init" << endl;
+//    vector.print();
+//
+//    cout << "Inserting values into the vector..." << endl;
+//    vector.insert(0, 10, -1);
+//    cout << "After insert: " << endl;
+//    vector.print();
+//
+//    cout << "Inserting values into the vector..." << endl;
+//    vector.insert(2, 5, 10);
+//    cout << "After the second insert: " << endl;
+//    vector.print();
+//
+//    cout << "Single insert..." << endl;
+//    vector.insert(3, 100);
+//    cout << "After the single insert: " << endl;
+//    vector.print();
+
+
+//    // = operator test
+//    cout << "Running the =operator test" << endl;
+//    vectorInt vector = vectorInt();
+//    for(int i = 0; i < 10; i++) {
+//        vector.push_back(i);
+//    }
+//    cout << "Init vector" << endl;
+//    vector.print();
+//
+//    vectorInt vector2 = vectorInt();
+//    cout << "Init vector2" << endl;
+//    vector2.print();
+//
+//    cout << "Assigning vector to vector2" << endl;
+//    vector2 = vector;
+//    vector2.print();
+//
+//    cout << "Altering vector2" << endl;
+//    vector2.pop_back();
+//    cout << "Vector: " << endl;
+//    vector.print();
+//    cout << "Altered vector2: " << endl;
+//    vector2.print();
+//
+//    cout << "Altering vector" << endl;
+//    vector.push_back(5);
+//    cout << "Altered vector: " << endl;
+//    vector.print();
+//    cout << "vector2: " << endl;
+//    vector2.print();
+
+
+//    // Reserve test
+//    cout << "Running the reserve test" << endl;
+//    vectorInt vector = vectorInt(5, 5);
+//    cout << "Init" << endl;
+//    vector.print();
+//
+//    cout << "Reserving room..." << endl;
+//    vector.reserve(200);
+//    cout << "After: " << endl;
+//    vector.print();
+
+
+//    // Resize test
+//    cout << "Running the resize test" << endl;
+//    vectorInt vector = vectorInt(40, 13);
+//    cout << "Testing Resize (smaller)" << endl;
+//    cout << "Init" << endl;
+//    vector.print();
+//
+//    cout << "Resizing (smaller)..." << endl;
+//    vector.resize(20);
+//    cout << "After: " << endl;
+//    vector.print();
+//
+//    cout << "Testing Resize (larger)" << endl;
+//    cout << "Before" << endl;
+//    vector.print();
+//
+//    cout << "Resizing (larger)..." << endl;
+//    vector.resize(55);
+//    cout << "After: " << endl;
+//    vector.print();
+
+
+//    // Swap test
+//    vectorInt vector = vectorInt(50, -1);
+//    vectorInt vector2 = vectorInt(5, 200);
+//    cout << "Testing swap" << endl;
+//    cout << "Before" << endl;
+//    cout << "Capacity: " << vector.capacity() << "\t\tCapacity (2): " << vector2.capacity() << endl;
+//    cout << "Size: " << vector.size()  << "\t\tSize (2): " << vector2.size() << endl;
+//    for(int i = 0; i < vector.size(); i++) {
+//        if(i >= vector2.size())
+//            cout << "[" << i << "] " << vector[i] << endl;
+//        else
+//            cout << "[" << i << "] " << vector[i] << "\t\t" << vector2[i] << endl;
+//    }
+//    cout << "Swapping..." << endl;
+//    vector.swap(vector2);
+//    cout << "After: " << endl;
+//    cout << "Capacity: " << vector.capacity() << "\t\tCapacity (2): " << vector2.capacity() << endl;
+//    cout << "Size: " << vector.size()  << "\t\tSize (2): " << vector2.size() << endl;
+//    int max = std::max(vector.size(), vector2.size());
+//    for(int i = 0; i < max; i++) {
+//        if(i >= vector.size())
+//            cout << "[" << i << "]\t\t" << vector2[i] << endl;
+//        else
+//            cout << "[" << i << "] " << vector[i] << "\t\t" << vector2[i] << endl;
+//    }
+
+
+
+    // Run the two implementations
+    // Input the number of push_back calls as the param
+    runTests(2000000);
 
     return 0;
 }
